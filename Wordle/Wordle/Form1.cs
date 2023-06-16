@@ -13,10 +13,10 @@ namespace Wordle
     public partial class Form1 : Form
     {
         Scene scene;
-        Word word;
         public Form1()
         {
             InitializeComponent();
+            DoubleBuffered = true;
             scene=new Scene(new Point(50,50),5);
             Invalidate();
         }
@@ -29,6 +29,14 @@ namespace Wordle
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             scene.Draw(e.Graphics);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeysConverter converter = new KeysConverter();
+            string s = converter.ConvertToString(e.KeyCode);
+            scene.AddLetter(s);
+            Invalidate();
         }
     }
 }

@@ -9,3 +9,13 @@ C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.GenerateResourc
 C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.CoreCompileInputs.cache
 C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.exe
 C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.pdb
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\bin\Debug\Wordle.exe.config
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\bin\Debug\Wordle.exe
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\bin\Debug\Wordle.pdb
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\obj\Debug\Wordle.csproj.AssemblyReference.cache
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\obj\Debug\Wordle.Form1.resources
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\obj\Debug\Wordle.Properties.Resources.resources
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\obj\Debug\Wordle.csproj.GenerateResource.cache
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\obj\Debug\Wordle.csproj.CoreCompileInputs.cache
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\obj\Debug\Wordle.exe
+C:\Users\w10P\Desktop\vp2023\Wordle\Wordle\obj\Debug\Wordle.pdb
