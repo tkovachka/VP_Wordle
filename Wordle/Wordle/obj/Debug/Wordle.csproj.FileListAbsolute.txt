@@ -30,3 +30,4 @@ C:\Users\Ana\Desktop\VP_2023\Wordle\Wordle\obj\Debug\Wordle.csproj.GenerateResou
 C:\Users\Ana\Desktop\VP_2023\Wordle\Wordle\obj\Debug\Wordle.csproj.CoreCompileInputs.cache
 C:\Users\Ana\Desktop\VP_2023\Wordle\Wordle\obj\Debug\Wordle.exe
 C:\Users\Ana\Desktop\VP_2023\Wordle\Wordle\obj\Debug\Wordle.pdb
+C:\Users\Ana\Desktop\VP_2023\Wordle\Wordle\bin\Debug\Wordle.pdb
