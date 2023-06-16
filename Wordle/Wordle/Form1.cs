@@ -16,11 +16,11 @@ namespace Wordle
 
         public object Character { get; private set; }
 
-        public Form1()
+        public Form1(int number)
         {
             InitializeComponent();
             DoubleBuffered = true;
-            scene=new Scene(new Point(50,50),5);
+            scene=new Scene(new Point(50,50),number);
             Invalidate();
         }
 

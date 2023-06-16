@@ -1,2 +1,2 @@
--proverka za dupka
 -dictionary
+-delete letter
