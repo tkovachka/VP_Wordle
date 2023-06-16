@@ -13,6 +13,9 @@ namespace Wordle
     public partial class Form1 : Form
     {
         Scene scene;
+
+        public object Character { get; private set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -34,8 +37,11 @@ namespace Wordle
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             KeysConverter converter = new KeysConverter();
-            string s = converter.ConvertToString(e.KeyCode);
-            scene.AddLetter(s);
+            if ((int)e.KeyCode >= 65 && (int)e.KeyCode <= 90)
+            {
+                string s = converter.ConvertToString(e.KeyCode);
+                scene.AddLetter(s);
+            }
             Invalidate();
         }
     }
