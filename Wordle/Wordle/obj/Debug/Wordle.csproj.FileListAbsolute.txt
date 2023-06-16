@@ -1,0 +1,11 @@
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\bin\Debug\Wordle.exe.config
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\bin\Debug\Wordle.exe
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\bin\Debug\Wordle.pdb
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.AssemblyReference.cache
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.SuggestedBindingRedirects.cache
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.Form1.resources
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.Properties.Resources.resources
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.GenerateResource.cache
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.csproj.CoreCompileInputs.cache
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.exe
+C:\Users\Desktop\vp_wordle\Wordle\Wordle\obj\Debug\Wordle.pdb
