@@ -16,6 +16,8 @@ namespace Wordle
         public bool Empty { get; set; }
         public string Letter { get; set; }
 
+        public int Status { get; set; } // 0-white 1-yellow 2-green
+
         public Square(Point center)
         {
             Center = center;
@@ -23,6 +25,12 @@ namespace Wordle
             Empty = true;
             Color = Color.White;
             Letter = "";
+            Status = 0;
+        }
+
+        public void ChangeStatus(int n)
+        {
+            Status = n;
         }
         public void Draw(Graphics g)
         {
@@ -31,11 +39,21 @@ namespace Wordle
             Font font = new Font("Arial", 16);
             Brush b = new SolidBrush(Color.Black);
             StringFormat format = new StringFormat();
+            Brush brush = new SolidBrush(Color.White);
+            if (Status == 1)
+            {
+                brush = new SolidBrush(Color.Yellow);
+            } else if(Status == 2)
+            {
+                brush = new SolidBrush(Color.Green);
+            }
+            g.FillRectangle(brush, Center.X - Size / 2, Center.Y - Size / 2, Size, Size);
             if (Letter != "")
             {
-                g.DrawString(Letter, font, b, new Point(Center.X-10,Center.Y-10), format);
+                g.DrawString(Letter, font, b, new Point(Center.X - 10, Center.Y - 10), format);
             }
             b.Dispose();
+            brush.Dispose();
             font.Dispose();
             p.Dispose();
 

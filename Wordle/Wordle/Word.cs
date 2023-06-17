@@ -13,6 +13,8 @@ namespace Wordle
         public List<Square> Squares { get; set; }
         public int NumSquares { get; set; }
         public bool IsFull { get; set; }
+
+        public StringBuilder sb { get; set; }
         public Word(Point Center,int Num)
         {
             Squares = new List<Square>();
@@ -23,6 +25,8 @@ namespace Wordle
                 Squares.Add(new Square(Center));
                 Center.X += 60;
             }
+            sb = new StringBuilder();
+
         }
         public void Draw(Graphics g)
         {
@@ -42,11 +46,42 @@ namespace Wordle
                 {
                     s.Empty = false;
                     s.AddLetter(letter);
+                    sb.Append(letter);
                     if (count == NumSquares)
                         IsFull = true;
                     return;
                 }
             }
+        }
+
+        public void checkLetters(string word)
+        {
+            for(int i=0; i<Squares.Count; i++)
+            {
+                for(int j=0; j<word.Length; j++)
+                {
+                    if (Squares[i].Letter == word[j].ToString())
+                    {
+                        if (i == j)
+                        {
+                            Squares[i].ChangeStatus(2);
+                        }
+                        else
+                        {
+                            Squares[i].ChangeStatus(1);
+                        }
+                    }
+                }
+            }
+        }
+
+        public bool IsCorrect()
+        {
+            foreach (Square s in Squares)
+            {
+                if (s.Status == 0 || s.Status == 1) return false;
+            }
+            return true;
         }
     }
 }

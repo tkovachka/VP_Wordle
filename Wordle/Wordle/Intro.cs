@@ -24,7 +24,7 @@ namespace Wordle
             form.Show();
 
 
-            this.Hide();
+            //this.Hide();
         }
     }
 }

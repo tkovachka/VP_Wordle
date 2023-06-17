@@ -14,13 +14,11 @@ namespace Wordle
     {
         Scene scene;
 
-        public object Character { get; private set; }
-
         public Form1(int number)
         {
             InitializeComponent();
             DoubleBuffered = true;
-            scene=new Scene(new Point(50,50),number);
+            scene = new Scene(new Point(50, 50), number);
             Invalidate();
         }
 
@@ -36,13 +34,34 @@ namespace Wordle
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            KeysConverter converter = new KeysConverter();
-            if ((int)e.KeyCode >= 65 && (int)e.KeyCode <= 90)
-            {
-                string s = converter.ConvertToString(e.KeyCode);
-                scene.AddLetter(s);
-            }
+
+           
+                KeysConverter converter = new KeysConverter();
+                if ((int)e.KeyCode >= 65 && (int)e.KeyCode <= 90)
+                {
+                    string s = converter.ConvertToString(e.KeyCode);
+                    scene.AddLetter(s);
+                }
+
+                if (e.KeyValue == 13)
+                {
+                   
+                    if (scene.Check())
+                    {
+                        DialogResult dlg = MessageBox.Show("YOU GUESSED THE WORD! Do you want to start over?",
+                            "CONGRATULATIONS!", MessageBoxButtons.YesNo);
+                        if (dlg == DialogResult.Yes)
+                        {
+                            this.Close();
+
+                        }
+                    }
+                   
+                }
             Invalidate();
         }
     }
 }
+
+    
+
