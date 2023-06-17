@@ -15,12 +15,14 @@ namespace Wordle
         Dictionary dictionary { get; set; }
 
         public String WordToGuess { get; set; }
+        public bool GameOver { get; set; }
 
         Random random = new Random();
 
        
         public Scene(Point Center, int num)
         {
+            GameOver = false;
             Words = new List<Word>();
             for (int i = 0; i < 5; i++)
             {
@@ -65,6 +67,10 @@ namespace Wordle
             {
                 if (w.IsFull)
                 {
+                    if (w == Words[Words.Count() - 1])
+                    {
+                        GameOver = true;
+                    }
                     w.checkLetters(WordToGuess);
                     if (w.IsCorrect())
                     {
