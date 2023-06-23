@@ -52,7 +52,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            //this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // numNumber
             // 
@@ -156,7 +156,7 @@
             this.label6.Size = new System.Drawing.Size(339, 126);
             this.label6.TabIndex = 8;
             this.label6.Text = resources.GetString("label6.Text");
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            //this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Intro
             // 
@@ -176,6 +176,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Intro";
             this.Text = "Intro";
+           // this.Load += new System.EventHandler(this.Intro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNumber)).EndInit();
             this.ResumeLayout(false);
