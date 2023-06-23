@@ -38,7 +38,7 @@ namespace Wordle
 
         public void AddLetter(string letter)
         {
-            int count = 0;
+            int count = -1;
             foreach(Square s in Squares)
             {
                 count++;
@@ -52,6 +52,7 @@ namespace Wordle
                     return;
                 }
             }
+          
         }
 
         public void checkLetters(string word)
@@ -71,6 +72,10 @@ namespace Wordle
                             Squares[i].ChangeStatus(1);
                         }
                     }
+                    else
+                    {
+                        Squares[i].ChangeStatus(3);
+                    }
                 }
             }
         }
@@ -79,7 +84,7 @@ namespace Wordle
         {
             foreach (Square s in Squares)
             {
-                if (s.Status == 0 || s.Status == 1) return false;
+                if (s.Status == 0 || s.Status == 1 || s.Status ==3) return false;
             }
             return true;
         }

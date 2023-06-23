@@ -75,6 +75,19 @@ namespace Wordle
             return false;
         }
 
+        public bool SceneIsFull()
+        {
+            
+                foreach (Word w in Words)
+                {
+                    if (!w.IsFull)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+        }
+
        
     }
 }

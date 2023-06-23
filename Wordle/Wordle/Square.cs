@@ -16,7 +16,7 @@ namespace Wordle
         public bool Empty { get; set; }
         public string Letter { get; set; }
 
-        public int Status { get; set; } // 0-white 1-yellow 2-green
+        public int Status { get; set; } // 0-white 1-yellow 2-green 3-gray
 
         public Square(Point center)
         {
@@ -43,13 +43,25 @@ namespace Wordle
             if (Status == 1)
             {
                 brush = new SolidBrush(Color.Yellow);
+                Empty = false;
             } else if(Status == 2)
             {
                 brush = new SolidBrush(Color.Green);
+                Empty = false;
+            }
+            else if (Status == 3)
+            {
+                brush = new SolidBrush(Color.Gray);
+                Empty = false;
             }
             g.FillRectangle(brush, Center.X - Size / 2, Center.Y - Size / 2, Size, Size);
+            if ((!Empty)&&(Status==1||Status==2||Status==3))
+            {
+                b = new SolidBrush(Color.White);
+            }
             if (Letter != "")
             {
+                
                 g.DrawString(Letter, font, b, new Point(Center.X - 10, Center.Y - 10), format);
             }
             b.Dispose();

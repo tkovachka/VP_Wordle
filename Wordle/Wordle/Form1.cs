@@ -14,11 +14,14 @@ namespace Wordle
     {
         Scene scene;
 
+        public int TimeLeft { get; set; } = 300;
+
         public Form1(int number)
         {
             InitializeComponent();
             DoubleBuffered = true;
             scene = new Scene(new Point(50, 50), number);
+            timer1.Start();
             Invalidate();
         }
 
@@ -32,6 +35,8 @@ namespace Wordle
             scene.Draw(e.Graphics);
         }
 
+        public bool EnterClicked { get; set; } = false;
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -40,14 +45,26 @@ namespace Wordle
                 if ((int)e.KeyCode >= 65 && (int)e.KeyCode <= 90)
                 {
                     string s = converter.ConvertToString(e.KeyCode);
+                //if (EnterClicked || !scene.SceneIsFull())
+                //{
                     scene.AddLetter(s);
+                  //  EnterClicked = false;
+                //}
+                //else
+                //{
+                  //  MessageBox.Show("Press ENTER to guess!");
+                //}
                 }
 
                 if (e.KeyValue == 13)
                 {
-                   
+                //if (scene.SceneIsFull())
+                //{
+                  //  EnterClicked = true;
+                //}
                     if (scene.Check())
                     {
+                    Invalidate();
                         DialogResult dlg = MessageBox.Show("YOU GUESSED THE WORD! Do you want to start over?",
                             "CONGRATULATIONS!", MessageBoxButtons.YesNo);
                         if (dlg == DialogResult.Yes)
@@ -56,8 +73,21 @@ namespace Wordle
 
                         }
                     }
-                   
+                //Invalidate();
                 }
+            Invalidate();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLeft -= 1;
+            label1.Text = $"{TimeLeft / 60}:{TimeLeft % 60}";
+            if (TimeLeft == 0)
+            {
+                timer1.Stop();
+                MessageBox.Show("You have no more time left!");
+                this.Close();
+            }
             Invalidate();
         }
     }
