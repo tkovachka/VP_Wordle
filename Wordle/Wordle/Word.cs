@@ -56,18 +56,28 @@ namespace Wordle
           
         }
 
+        //TODO: Implement duplicate letters logic 
         public void checkLetters(string word)
         {
+
+            List<string> WordLetters = new List<string>();
+            foreach(char w in word)
+            {
+                WordLetters.Add(w.ToString());
+            }
+
            foreach(Square s in Squares)
             {
                 s.ChangeStatus(3);
             }
+
                     for (int i = 0; i < Squares.Count; i++)
                     {
                         for (int j = 0; j < word.Length; j++)
                         {
                             if (Squares[i].Letter == word[j].ToString())
                             {
+                     
                                 if (i == j)
                                 {
                                     Squares[i].ChangeStatus(2);
@@ -76,9 +86,7 @@ namespace Wordle
                                 {
                                     Squares[i].ChangeStatus(1);
                                 }
-                    }
-                    
-                        
+                    }           
                 }
             }
         }

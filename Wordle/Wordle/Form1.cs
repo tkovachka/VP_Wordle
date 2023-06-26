@@ -71,6 +71,10 @@ namespace Wordle
                         }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Press ENTER to continue guessing!");
+                }
 
             }
 
@@ -103,11 +107,14 @@ namespace Wordle
 
                     if (green)
                     {
-                        //TODO: Open new intro window 
+                        
                         DialogResult dlg = MessageBox.Show("YOU GUESSED THE WORD! Do you want to start over?",
                             "CONGRATULATIONS!", MessageBoxButtons.YesNo);
                         if (dlg == DialogResult.Yes)
                         {
+                            Intro intro = new Intro();
+                            this.Hide();
+                            intro.ShowDialog();
                             this.Close();
                         }
                     }
@@ -123,13 +130,20 @@ namespace Wordle
 
                     if (scene.GameOver)
                     {
-                        //TODO: open new intro window 
+                        
                         DialogResult dlg = MessageBox.Show("No more attepts left. Do you want to try again?", "Game Over", MessageBoxButtons.YesNo);
                         if (dlg == DialogResult.Yes)
                         {
+                            Intro intro = new Intro();
+                            this.Hide();
+                            intro.ShowDialog();
                             this.Close();
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Fill all places with letters and then click ENTER!");
                 }
 
             }
