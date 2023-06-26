@@ -19,10 +19,13 @@ namespace Wordle
 
         Random random = new Random();
 
+        public bool full { get; set; }
+
        
         public Scene(Point Center, int num)
         {
             GameOver = false;
+            full = false;
             Words = new List<Word>();
             for (int i = 0; i < 5; i++)
             {
@@ -32,8 +35,8 @@ namespace Wordle
             dictionary = new Dictionary();
             switch (num)
             {
-                case 5: //WordToGuess = dictionary.FiveLetters[random.Next(0,dictionary.FiveLetters.Count)]; break;
-                    WordToGuess = "TABBL"; break;
+                case 5: WordToGuess = dictionary.FiveLetters[random.Next(0,dictionary.FiveLetters.Count)]; break;
+                    //WordToGuess = "TABLE"; break;
                 case 6: WordToGuess = dictionary.SixLetters[random.Next(0, dictionary.SixLetters.Count)]; break;
                 default: WordToGuess = dictionary.SevenLetters[random.Next(0, dictionary.SevenLetters.Count)]; break;
             }

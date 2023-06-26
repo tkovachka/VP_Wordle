@@ -58,49 +58,27 @@ namespace Wordle
 
         public void checkLetters(string word)
         {
-            /*Hashtable letters = new Hashtable();
-            foreach(char c in word)
+           foreach(Square s in Squares)
             {
-                if (!letters.ContainsKey(c))
-                {
-                    letters.Add(c, 0);
-                }
-                else
-                {
-                    int num = (int)letters[c];
-                    letters.Add(c, num + 1);
-                }
-            }*/
-
-            List<string> letters = new List<string>();
-            foreach(char c in word)
-            {
-                letters.Add(c.ToString());
+                s.ChangeStatus(3);
             }
-
-            for(int i=0; i<Squares.Count; i++)
-            {
-                for(int j=0; j<word.Length; j++)
-                {
-                   
-                    if (Squares[i].Letter == word[j].ToString())
+                    for (int i = 0; i < Squares.Count; i++)
                     {
-                        //int num = (int)letters[Squares[i].Letter];
-                        //letters.Add(Squares[i].Letter, num - 1);
-                        if (i == j)
+                        for (int j = 0; j < word.Length; j++)
                         {
-                            Squares[i].ChangeStatus(2);
-                        }
-                        else
-                        {
-                            Squares[i].ChangeStatus(1);
-                        }
-                        letters.Remove(Squares[i].Letter);
+                            if (Squares[i].Letter == word[j].ToString())
+                            {
+                                if (i == j)
+                                {
+                                    Squares[i].ChangeStatus(2);
+                                }
+                                else
+                                {
+                                    Squares[i].ChangeStatus(1);
+                                }
                     }
-                    else
-                    {
-                        Squares[i].ChangeStatus(3);
-                    }
+                    
+                        
                 }
             }
         }

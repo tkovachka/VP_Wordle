@@ -11,13 +11,16 @@ using Wordle;
 
 namespace Wordle
 {
-    public partial class Form1 : Form
+    public partial class Wordle : Form
     {
+
 
         Scene scene;
         public int TimeLeft { get; set; }
 
-        public Form1(int number)
+        public int n { get; set; } = 0;
+
+        public Wordle(int number)
         {
             InitializeComponent();
             DoubleBuffered = true;
@@ -37,22 +40,40 @@ namespace Wordle
             scene.Draw(e.Graphics);
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLeft -= 1;
+            label1.Text = $"{(TimeLeft / 60).ToString("D2")}:{(TimeLeft % 60).ToString("D2")}";
+            if (TimeLeft == 0)
+            {
+                timer1.Stop();
+                MessageBox.Show("You have no more time left!");
+                this.Close();
+            }
+            Invalidate();
+        }
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             KeysConverter converter = new KeysConverter();
             if ((int)e.KeyCode >= 65 && (int)e.KeyCode <= 90)
             {
-                string s = converter.ConvertToString(e.KeyCode);
-                scene.AddLetter(s);
-            }
-            if (scene.GameOver)
-            {
-                DialogResult dlg = MessageBox.Show("No more attepts left. Do you want to try again?", "Game Over", MessageBoxButtons.YesNo);
-                if (dlg == DialogResult.Yes)
+                if (!scene.full)
                 {
-                    this.Close();
+                    string s = converter.ConvertToString(e.KeyCode);
+                    scene.AddLetter(s);
+                    for (int i = n; i < scene.Words.Count; i++)
+                    {
+                        if (scene.Words[i].IsFull)
+                        {
+                            scene.full = true;
+                            n++;
+                        }
+                    }
                 }
+
             }
+
             if (e.KeyCode == Keys.Back) // Check if Backspace key is pressed
             {
                 foreach (Word word in scene.Words)
@@ -60,7 +81,7 @@ namespace Wordle
 
                     for (int i = word.Squares.Count - 1; i >= 0; i--)
                     {
-                        if (!string.IsNullOrEmpty(word.Squares[i].Letter))
+                        if (!string.IsNullOrEmpty(word.Squares[i].Letter) && word.Squares[i].Status==0)
                         {
                             if (i == word.Squares.Count - 1)
                                 word.IsFull = false;
@@ -72,46 +93,54 @@ namespace Wordle
 
                 }
             }
+
             if (e.KeyValue == 13)
             {
-
-                if (scene.Check())
+                if (scene.full)
                 {
+                    bool green = scene.Check();
                     Invalidate();
-                    DialogResult dlg = MessageBox.Show("YOU GUESSED THE WORD! Do you want to start over?",
-                        "CONGRATULATIONS!", MessageBoxButtons.YesNo);
-                    if (dlg == DialogResult.Yes)
+
+                    if (green)
                     {
-                        Intro intro = new Intro();
-                        this.Hide();
-                        intro.ShowDialog();
-                        this.Close();
+                        //TODO: Open new intro window 
+                        DialogResult dlg = MessageBox.Show("YOU GUESSED THE WORD! Do you want to start over?",
+                            "CONGRATULATIONS!", MessageBoxButtons.YesNo);
+                        if (dlg == DialogResult.Yes)
+                        {
+                            this.Close();
+                        }
                     }
                     else
                     {
-                        this.Close();
+                        foreach (Word w in scene.Words)
+                        {
+
+                            w.IsCorrect();
+                        }
+                    }
+                    scene.full = false;
+
+                    if (scene.GameOver)
+                    {
+                        //TODO: open new intro window 
+                        DialogResult dlg = MessageBox.Show("No more attepts left. Do you want to try again?", "Game Over", MessageBoxButtons.YesNo);
+                        if (dlg == DialogResult.Yes)
+                        {
+                            this.Close();
+                        }
                     }
                 }
-            }
-            Invalidate();
-        }
-    
 
-    private void timer1_Tick(object sender, EventArgs e)
-        {
-            TimeLeft -= 1;
-            label1.Text = $"{TimeLeft / 60}:{TimeLeft % 60}";
-            if (TimeLeft == 0)
-            {
-                timer1.Stop();
-                MessageBox.Show("You have no more time left!");
-                this.Close();
             }
+
             Invalidate();
         }
-        
+    }
 }
-}
+
+      
+
 
     
 

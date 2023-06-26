@@ -19,7 +19,7 @@ namespace Wordle
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1((int)numNumber.Value);
+            Wordle form = new Wordle((int)numNumber.Value);
             this.Hide();
             form.ShowDialog();
             this.Close();

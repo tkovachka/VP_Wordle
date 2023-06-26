@@ -16,7 +16,7 @@ namespace Wordle
         public bool Empty { get; set; }
         public string Letter { get; set; }
 
-        public int Status { get; set; } // 0-white 1-yellow 2-green 3-gray
+        public int Status { get; set; } // 0-white 1-yellow 2-green 3-grey
 
         public Square(Point center)
         {

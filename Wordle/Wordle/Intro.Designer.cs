@@ -52,10 +52,12 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            //this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // numNumber
             // 
+            this.numNumber.BackColor = System.Drawing.Color.PeachPuff;
+            this.numNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numNumber.Location = new System.Drawing.Point(45, 561);
             this.numNumber.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numNumber.Maximum = new decimal(new int[] {
@@ -69,7 +71,7 @@
             0,
             0});
             this.numNumber.Name = "numNumber";
-            this.numNumber.Size = new System.Drawing.Size(107, 22);
+            this.numNumber.Size = new System.Drawing.Size(107, 24);
             this.numNumber.TabIndex = 1;
             this.numNumber.Value = new decimal(new int[] {
             5,
@@ -107,7 +109,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(207, 33);
+            this.label2.Location = new System.Drawing.Point(244, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(242, 63);
             this.label2.TabIndex = 4;
@@ -156,7 +158,6 @@
             this.label6.Size = new System.Drawing.Size(339, 126);
             this.label6.TabIndex = 8;
             this.label6.Text = resources.GetString("label6.Text");
-            //this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Intro
             // 
@@ -176,7 +177,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Intro";
             this.Text = "Intro";
-           // this.Load += new System.EventHandler(this.Intro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numNumber)).EndInit();
             this.ResumeLayout(false);

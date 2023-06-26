@@ -3,10 +3,10 @@ C:\Users\Desktop\vp2023\Wordle\Wordle\bin\Release\Wordle.exe
 C:\Users\Desktop\vp2023\Wordle\Wordle\bin\Release\Wordle.pdb
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.csproj.AssemblyReference.cache
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.csproj.SuggestedBindingRedirects.cache
-C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.Form1.resources
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.Intro.resources
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.Properties.Resources.resources
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.csproj.GenerateResource.cache
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.csproj.CoreCompileInputs.cache
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.exe
 C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.pdb
+C:\Users\Desktop\vp2023\Wordle\Wordle\obj\Release\Wordle.Wordle.resources
