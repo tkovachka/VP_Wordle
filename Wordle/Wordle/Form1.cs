@@ -23,6 +23,7 @@ namespace Wordle
             DoubleBuffered = true;
             scene = new Scene(new Point(50, 50), number);
             TimeLeft = 300;
+            timer1.Start();
             Invalidate();
         }
 
@@ -94,21 +95,22 @@ namespace Wordle
             }
             Invalidate();
         }
-    }
+    
 
-    /*private void timer1_Tick(object sender, EventArgs e)
+    private void timer1_Tick(object sender, EventArgs e)
+        {
+            TimeLeft -= 1;
+            label1.Text = $"{TimeLeft / 60}:{TimeLeft % 60}";
+            if (TimeLeft == 0)
             {
-                TimeLeft -= 1;
-                label1.Text = $"{TimeLeft / 60}:{TimeLeft % 60}";
-                if (TimeLeft == 0)
-                {
-                    timer1.Stop();
-                    MessageBox.Show("You have no more time left!");
-                    this.Close();
-                }
-                Invalidate();
-            }*/
+                timer1.Stop();
+                MessageBox.Show("You have no more time left!");
+                this.Close();
+            }
+            Invalidate();
+        }
         
+}
 }
 
     

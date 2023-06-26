@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace Wordle
 
         public void AddLetter(string letter)
         {
-            int count = -1;
+            int count = 0;
             foreach(Square s in Squares)
             {
                 count++;
@@ -57,12 +58,35 @@ namespace Wordle
 
         public void checkLetters(string word)
         {
+            /*Hashtable letters = new Hashtable();
+            foreach(char c in word)
+            {
+                if (!letters.ContainsKey(c))
+                {
+                    letters.Add(c, 0);
+                }
+                else
+                {
+                    int num = (int)letters[c];
+                    letters.Add(c, num + 1);
+                }
+            }*/
+
+            List<string> letters = new List<string>();
+            foreach(char c in word)
+            {
+                letters.Add(c.ToString());
+            }
+
             for(int i=0; i<Squares.Count; i++)
             {
                 for(int j=0; j<word.Length; j++)
                 {
+                   
                     if (Squares[i].Letter == word[j].ToString())
                     {
+                        //int num = (int)letters[Squares[i].Letter];
+                        //letters.Add(Squares[i].Letter, num - 1);
                         if (i == j)
                         {
                             Squares[i].ChangeStatus(2);
@@ -71,6 +95,7 @@ namespace Wordle
                         {
                             Squares[i].ChangeStatus(1);
                         }
+                        letters.Remove(Squares[i].Letter);
                     }
                     else
                     {
