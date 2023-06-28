@@ -27,6 +27,7 @@ namespace Wordle
             scene = new Scene(new Point(50, 50), number);
             TimeLeft = 300;
             timer1.Start();
+            lettersLeft.Text = scene.lettersLeft();
             Invalidate();
         }
 
@@ -117,6 +118,10 @@ namespace Wordle
                             intro.ShowDialog();
                             this.Close();
                         }
+                        else
+                        {
+                            this.Close();
+                        }
                     }
                     else
                     {
@@ -130,13 +135,18 @@ namespace Wordle
 
                     if (scene.GameOver)
                     {
-                        
-                        DialogResult dlg = MessageBox.Show("No more attepts left. Do you want to try again?", "Game Over", MessageBoxButtons.YesNo);
+
+                        DialogResult dlg = MessageBox.Show($"No more attepts left.The word was '{scene.WordToGuess}' ! Do you want to try again with another word?", "Game Over", MessageBoxButtons.YesNo);
+
                         if (dlg == DialogResult.Yes)
                         {
                             Intro intro = new Intro();
                             this.Hide();
                             intro.ShowDialog();
+                            this.Close();
+                        }
+                        else
+                        {
                             this.Close();
                         }
                     }
@@ -145,9 +155,9 @@ namespace Wordle
                 {
                     MessageBox.Show("Fill all places with letters and then click ENTER!");
                 }
-
+                lettersLeft.Text = scene.lettersLeft();
             }
-
+           
             Invalidate();
         }
     }

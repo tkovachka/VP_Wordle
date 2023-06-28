@@ -21,7 +21,7 @@ namespace Wordle
 
         public bool full { get; set; }
 
-       
+        public List<string> lettersGuessed { get; set; } = new List<string>();
         public Scene(Point Center, int num)
         {
             GameOver = false;
@@ -33,15 +33,47 @@ namespace Wordle
                 Center.Y += 60;
             }
             dictionary = new Dictionary();
+           
             switch (num)
             {
-                case 5: WordToGuess = dictionary.FiveLetters[random.Next(0,dictionary.FiveLetters.Count)]; break;
-                    //WordToGuess = "TABLE"; break;
-                case 6: WordToGuess = dictionary.SixLetters[random.Next(0, dictionary.SixLetters.Count)]; break;
+                case 5: //WordToGuess = dictionary.FiveLetters[random.Next(0,dictionary.FiveLetters.Count)]; break;
+                    WordToGuess = "CLOSE"; break;
+                case 6: //WordToGuess = dictionary.SixLetters[random.Next(0, dictionary.SixLetters.Count)]; break;
+                    WordToGuess = "BUBBLE"; break;
                 default: WordToGuess = dictionary.SevenLetters[random.Next(0, dictionary.SevenLetters.Count)]; break;
             }
 
         }
+
+        public string lettersLeft()
+        {
+            foreach (Word w in Words)
+            {
+                foreach (Square s in w.Squares)
+                {
+                    if (s.Status == 3)
+                    {
+                        lettersGuessed.Add(s.Letter);
+                    }
+                }
+            }
+            StringBuilder sb = new StringBuilder();
+            for(char c='A';c<='Z'; c++)
+            {
+                if (lettersGuessed.Contains(c.ToString()))
+                {
+                    sb.Append(" ");
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+                sb.Append(" ");
+            }
+            return sb.ToString();
+        }
+
+       
         public void Draw(Graphics g)
         {
             foreach (Word word in Words)
@@ -50,8 +82,11 @@ namespace Wordle
             }
         }
 
+       
+
         public void AddLetter(string letter)
         {
+            //lettersGuessed.Add(letter);
             foreach (Word w in Words)
             {
                 if (!w.IsFull)

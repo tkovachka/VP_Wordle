@@ -56,28 +56,174 @@ namespace Wordle
           
         }
 
-        //TODO: Implement duplicate letters logic 
+        //TODO: Implement logic if the word to be guessed has duplicate letters
         public void checkLetters(string word)
         {
-
-            List<string> WordLetters = new List<string>();
-            foreach(char w in word)
+            bool hasDuplicates = false;
+            for (int i = 0; i < word.Length; i++)
             {
-                WordLetters.Add(w.ToString());
-            }
-
-           foreach(Square s in Squares)
-            {
-                s.ChangeStatus(3);
-            }
-
-                    for (int i = 0; i < Squares.Count; i++)
+                for (int j = 0; j < word.Length; j++)
+                {
+                    if (word[i] == word[j] && i != j)
                     {
-                        for (int j = 0; j < word.Length; j++)
+                        hasDuplicates = true;
+                    }
+                }
+            }
+            if (!hasDuplicates)
+            {
+                List<GuessedLetter> duplicates = new List<GuessedLetter>();
+                List<string> duplicateLetters = new List<string>();
+                for (int i = 0; i < Squares.Count; i++)
+                {
+                    for (int j = 0; j < Squares.Count; j++)
+                    {
+                        if ((Squares[i].Letter == Squares[j].Letter) && (i != j) && (!duplicateLetters.Contains(Squares[i].Letter)))
                         {
-                            if (Squares[i].Letter == word[j].ToString())
+                            duplicateLetters.Add(Squares[i].Letter);
+                        }
+                    }
+                }
+                foreach (string l in duplicateLetters)
+                {
+                    duplicates.Add(new GuessedLetter(l));
+                }
+                foreach (Square s in Squares)
+                {
+                    s.ChangeStatus(3);
+                }
+
+                bool IsGuessed = false;
+                for (int i = 0; i < Squares.Count; i++)
+                {
+                    for (int j = 0; j < Squares.Count; j++)
+                    {
+                        if (Squares[i].Letter == word[j].ToString() && i == j)
+                        {
+                            IsGuessed = true;
+                        }
+                    }
+                }
+
+                for (int i = 0; i < Squares.Count; i++)
+                {
+                    for (int j = 0; j < word.Length; j++)
+                    {
+                        if (Squares[i].Letter == word[j].ToString())
+                        {
+
+                            if (i == j)
                             {
-                     
+                                Squares[i].ChangeStatus(2);
+                                if (duplicateLetters.Contains(Squares[i].Letter))
+                                {
+                                    foreach (GuessedLetter guessedLetter in duplicates)
+                                    {
+                                        if (Squares[i].Letter == guessedLetter.Letter)
+                                        {
+                                            guessedLetter.Found = true;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (duplicateLetters.Contains(Squares[i].Letter))
+                                {
+                                    foreach (GuessedLetter guessedLetter in duplicates)
+                                    {
+                                        if (Squares[i].Letter == guessedLetter.Letter)
+                                        {
+                                            if (guessedLetter.Found == true || IsGuessed)
+                                            {
+                                                Squares[i].ChangeStatus(3);
+                                            }
+                                            else
+                                            {
+                                                Squares[i].ChangeStatus(1);
+                                                guessedLetter.Found = true;
+                                            }
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Squares[i].ChangeStatus(1);
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {/*
+                List<GuessedLetter> duplicates = new List<GuessedLetter>();
+                List<string> duplicateLetters = new List<string>();
+                List<string> allLetters = new List<string>();
+                for (int i = 0; i < word.Length; i++)
+                {
+                    allLetters.Add(word[i].ToString());
+                    for (int j = 0; j < word.Length; j++)
+                    {
+                        if ((word[i].ToString() == word[j].ToString()) && (i != j) && (!duplicateLetters.Contains(word[i].ToString())))
+                        {
+                            duplicateLetters.Add(word[i].ToString());
+                        }
+                    }
+                }
+                foreach (string l in duplicateLetters)
+                {
+                    int Count = 0;
+                    foreach(string letter in allLetters)
+                    {
+                        if (letter == l)
+                        {
+                            Count += 1;
+                        }
+                    }
+                    duplicates.Add(new GuessedLetter(l,Count));
+                }
+
+                foreach (Square s in Squares)
+                {
+                    s.ChangeStatus(3);
+                }
+
+                for (int i = 0; i < Squares.Count; i++)
+                {
+                    for (int j = 0; j < word.Length; j++)
+                    {
+                        if (Squares[i].Letter == word[j].ToString())
+                        {
+                            
+                                if (duplicateLetters.Contains(Squares[i].Letter))
+                                {
+                                    foreach(GuessedLetter guessedLetter in duplicates)
+                                    {
+                                        if (guessedLetter.Letter == Squares[i].Letter)
+                                        {
+                                            if (guessedLetter.Count > 0)
+                                            {
+                                            if (i == j)
+                                            {
+                                                Squares[i].ChangeStatus(2);
+                                            }
+                                            else
+                                            {
+                                                Squares[i].ChangeStatus(1);
+                                            }
+                                            guessedLetter.Count -= 1;
+                                        }
+                                        else
+                                        {
+                                            Squares[i].ChangeStatus(3);
+                                        }
+                                        }
+                                    }
+                            }
+                            else
+                            {
                                 if (i == j)
                                 {
                                     Squares[i].ChangeStatus(2);
@@ -86,7 +232,38 @@ namespace Wordle
                                 {
                                     Squares[i].ChangeStatus(1);
                                 }
-                    }           
+                            }
+                        }
+                        else
+                        {
+                            Squares[i].ChangeStatus(3);
+                        }
+                    }
+                }*/
+
+
+                foreach (Square s in Squares)
+                {
+                    s.ChangeStatus(3);
+                }
+
+                for (int i = 0; i < Squares.Count; i++)
+                {
+                    for (int j = 0; j < word.Length; j++)
+                    {
+                        if (Squares[i].Letter == word[j].ToString())
+                        {
+
+                            if (i == j)
+                            {
+                                Squares[i].ChangeStatus(2);
+                            }
+                            else
+                            {
+                                Squares[i].ChangeStatus(1);
+                            }
+                        }
+                    }
                 }
             }
         }
