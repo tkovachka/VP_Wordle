@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -53,7 +54,6 @@ namespace Wordle
                     return;
                 }
             }
-          
         }
 
         //TODO: Implement logic if the word to be guessed has duplicate letters
@@ -164,14 +164,19 @@ namespace Wordle
                 for (int i = 0; i < word.Length; i++)
                 {
                     allLetters.Add(word[i].ToString());
+                    
                     for (int j = 0; j < word.Length; j++)
                     {
                         if ((word[i].ToString() == word[j].ToString()) && (i != j) && (!duplicateLetters.Contains(word[i].ToString())))
                         {
                             duplicateLetters.Add(word[i].ToString());
+                           
                         }
                     }
                 }
+
+           
+
                 foreach (string l in duplicateLetters)
                 {
                     int Count = 0;
@@ -182,29 +187,32 @@ namespace Wordle
                             Count += 1;
                         }
                     }
+              
                     duplicates.Add(new GuessedLetter(l,Count));
                 }
 
-                foreach (Square s in Squares)
+                /*foreach (Square s in Squares)
                 {
                     s.ChangeStatus(3);
                 }
 
-                for (int i = 0; i < Squares.Count; i++)
+                for (int j = 0; j < word.Length; j++) // NUMBER
                 {
-                    for (int j = 0; j < word.Length; j++)
+                    for (int i = 0; i < Squares.Count; i++) // BUBBLE 
                     {
-                        if (Squares[i].Letter == word[j].ToString())
+                        if (Squares[i].Letter == word[j].ToString()) //B
                         {
                             
                                 if (duplicateLetters.Contains(Squares[i].Letter))
                                 {
-                                    foreach(GuessedLetter guessedLetter in duplicates)
+                                    foreach(GuessedLetter guessedLetter in duplicates) //(B,3)
                                     {
                                         if (guessedLetter.Letter == Squares[i].Letter)
                                         {
+                                        
                                             if (guessedLetter.Count > 0)
                                             {
+                                           
                                             if (i == j)
                                             {
                                                 Squares[i].ChangeStatus(2);
@@ -213,9 +221,9 @@ namespace Wordle
                                             {
                                                 Squares[i].ChangeStatus(1);
                                             }
-                                            guessedLetter.Count -= 1;
+                                            guessedLetter.Count -= 1; 
                                         }
-                                        else
+                                       /* else
                                         {
                                             Squares[i].ChangeStatus(3);
                                         }
@@ -239,9 +247,10 @@ namespace Wordle
                             Squares[i].ChangeStatus(3);
                         }
                     }
-                }*/
+                }
 
 
+                */
                 foreach (Square s in Squares)
                 {
                     s.ChangeStatus(3);
@@ -263,6 +272,18 @@ namespace Wordle
                                 Squares[i].ChangeStatus(1);
                             }
                         }
+                    }
+                }
+
+                for (int i = 0, j = 0; i < Squares.Count; i++, j++)
+                {
+                    if (Squares[i].Letter == word[j].ToString())
+                    {
+
+                       
+                            Squares[i].ChangeStatus(2);
+                        
+                        
                     }
                 }
             }
