@@ -14,6 +14,8 @@ namespace Wordle
 
         public int Count { get; set; }
 
+        public bool CanWrite { get; set; } = true;
+
         public GuessedLetter(string l)
         {
             Found = false;
@@ -26,6 +28,7 @@ namespace Wordle
             Found = false;
             Letter = l;
             Count = c;
+
         }
 
 

@@ -36,10 +36,10 @@ namespace Wordle
            
             switch (num)
             {
-                case 5: //WordToGuess = dictionary.FiveLetters[random.Next(0,dictionary.FiveLetters.Count)]; break;
-                    WordToGuess = "CLOSE"; break;
-                case 6: //WordToGuess = dictionary.SixLetters[random.Next(0, dictionary.SixLetters.Count)]; break;
-                    WordToGuess = "BANANA"; break;
+                case 5: WordToGuess = dictionary.FiveLetters[random.Next(0,dictionary.FiveLetters.Count)]; break;
+                    //WordToGuess = "CLOSE"; break;
+                case 6: WordToGuess = dictionary.SixLetters[random.Next(0, dictionary.SixLetters.Count)]; break;
+                   // WordToGuess = "BANANA"; break;
                 default: WordToGuess = dictionary.SevenLetters[random.Next(0, dictionary.SevenLetters.Count)]; break;
             }
 
